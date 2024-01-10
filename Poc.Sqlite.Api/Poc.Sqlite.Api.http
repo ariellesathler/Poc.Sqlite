@@ -1,0 +1,6 @@
+@Poc.Sqlite.Api_HostAddress = http://localhost:5257
+
+GET {{Poc.Sqlite.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

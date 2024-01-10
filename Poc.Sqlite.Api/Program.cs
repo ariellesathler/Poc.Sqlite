@@ -1,6 +1,7 @@
 using Dapper;
 using LiteDB;
 using Microsoft.Data.Sqlite;
+using Poc.Sqlite.Api.BackgroundServices;
 using Poc.Sqlite.Api.Domain;
 using Poc.Sqlite.Api.Infra;
 using System.Data;
@@ -13,6 +14,7 @@ builder.Services.AddScoped<IDbConnection>(db => new SqliteConnection("Data Sourc
 builder.Services.AddScoped<ILiteDatabase>(db => new LiteDatabase("Filename=LocalDatabaseNoSql.db"));
 builder.Services.AddKeyedScoped<IUserRepository, UserRepository>("Sql");
 builder.Services.AddKeyedScoped<IUserRepository, UserRepositoryNoSql>("NoSql");
+builder.Services.AddHostedService<SyncDbFileService>();
 
 var app = builder.Build();
 
